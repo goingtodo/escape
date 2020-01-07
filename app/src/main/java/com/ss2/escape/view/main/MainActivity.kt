@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ss2.escape.R
 import com.ss2.escape.view.fragment.PnoFragment
 import com.ss2.escape.view.fragment.SecretFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +20,17 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
 
     }
+
+    /*private fun setViewPager() {
+        val mainViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
+        mainActivityViewPager.adapter = mainViewPagerAdapter
+        mainActivityTabLayout.setupWithViewPager(mainActivityViewPager)
+
+        mainActivityButton.setOnClickListener {
+            startActivity<SecondActivity>()
+        }
+    }
+*/
     val navigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
         object : BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {

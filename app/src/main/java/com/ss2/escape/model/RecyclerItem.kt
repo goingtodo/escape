@@ -1,5 +1,10 @@
 package com.ss2.escape.model
 
-data class RecyclerItem(var title: String, var image: Int){
+data class RecyclerItem(
+    //Title Text
+    var title: String,
+    //Image
+    var image: Int
+){
 
 }
