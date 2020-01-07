@@ -1,4 +1,4 @@
-package com.example.escape
+package com.ss2.escape
 
 import org.junit.Test
 

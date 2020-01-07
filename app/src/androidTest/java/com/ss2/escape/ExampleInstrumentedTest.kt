@@ -1,4 +1,4 @@
-package com.example.escape
+package com.ss2.escape
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
