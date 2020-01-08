@@ -1,14 +1,15 @@
-package com.example.escape
+package com.ss2.escape.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.ss2.escape.R
+import com.ss2.escape.view.fragment.PnoFragment
+import com.ss2.escape.view.fragment.SecretFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,20 +20,35 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
 
     }
+
+    /*private fun setViewPager() {
+        val mainViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
+        mainActivityViewPager.adapter = mainViewPagerAdapter
+        mainActivityTabLayout.setupWithViewPager(mainActivityViewPager)
+
+        mainActivityButton.setOnClickListener {
+            startActivity<SecondActivity>()
+        }
+    }
+*/
     val navigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
         object : BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 var fm = supportFragmentManager
 
                 when (item.getItemId()) {
-                    R.id.pnoItem-> {
-                        fm.replaceFragment(R.id.frameLayout, PnoFragment())
-                        Log.d("main","PNO Touch");
+                    R.id.pnoItem -> {
+                        fm.replaceFragment(
+                            R.id.frameLayout,
+                            PnoFragment()
+                        )
                         return true
                     }
                     R.id.secretItem -> {
-                        fm.replaceFragment(R.id.frameLayout, SecretFragment())
-                        Log.d("main","Secret Touch");
+                        fm.replaceFragment(
+                            R.id.frameLayout,
+                            SecretFragment()
+                        )
                         return true
                     }
                 }

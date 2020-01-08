@@ -1,11 +1,13 @@
-package com.example.escape
+package com.ss2.escape.view.start
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ss2.escape.R
+import com.ss2.escape.view.MainActivity
 import kotlinx.android.synthetic.main.activity_sub.*
 
-class SubActivity : AppCompatActivity() {
+class StartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
