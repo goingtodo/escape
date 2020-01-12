@@ -2,6 +2,8 @@ package com.ss2.escape.util
 
 import android.util.Log
 
+//Log 사용시 사용 클래스와 위치를 알려주는 Log 호환 클래스
+//변수 Debug를 변경함으로써 빌드 시 Log를 지우지 않고 Log 기능 off가능
 class SLog {
 
     companion object {

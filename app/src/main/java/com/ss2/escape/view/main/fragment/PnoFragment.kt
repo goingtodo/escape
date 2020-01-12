@@ -11,6 +11,8 @@ import com.ss2.escape.adapter.ItemAdapter
 import com.ss2.escape.model.RecyclerItem
 import kotlinx.android.synthetic.main.fragment_pno.*
 
+//Pno View
+//Pno에서 표현해야하는 것들은 여기서 표현해야함
 class PnoFragment : Fragment() {
     private lateinit var recyclerItemList: MutableList<RecyclerItem>
     private val gridLayoutManager by lazy { GridLayoutManager(context,5)}

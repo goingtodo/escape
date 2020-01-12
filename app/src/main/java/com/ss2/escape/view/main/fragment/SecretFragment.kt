@@ -10,7 +10,8 @@ import com.ss2.escape.R
 import com.ss2.escape.adapter.ItemAdapter
 import com.ss2.escape.model.RecyclerItem
 import kotlinx.android.synthetic.main.fragment_secret.*
-
+//Secret View
+//수수께기에서 표현해야하는 것들은 여기서 표현해야함
 class SecretFragment : Fragment() {
     private lateinit var recyclerItemList: MutableList<RecyclerItem>
     private val gridLayoutManager by lazy { GridLayoutManager(context,3) }

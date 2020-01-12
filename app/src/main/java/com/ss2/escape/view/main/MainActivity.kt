@@ -11,6 +11,8 @@ import com.ss2.escape.R
 import com.ss2.escape.view.fragment.PnoFragment
 import com.ss2.escape.view.fragment.SecretFragment
 
+//Main View
+//Bottom Tap과 Fragment를 보여주는 Activity
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

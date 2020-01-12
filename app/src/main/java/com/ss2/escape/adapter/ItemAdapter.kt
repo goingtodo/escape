@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ss2.escape.R
 import com.ss2.escape.model.RecyclerItem
 
+/* RecyclerView에 Item 추가 Adapter
+   Item.xml을 추가하면서 어떤 오브젝트를 변경하고 설정할 것인지 Control
+* */
 class ItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?): RecyclerView.Adapter<ItemAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
