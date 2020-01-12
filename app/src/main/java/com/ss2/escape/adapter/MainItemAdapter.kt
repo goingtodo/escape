@@ -44,7 +44,7 @@ class MainItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?, v
 
         fun bind(item:RecyclerItem, itemClick:setOnRecyclerItemClickListener){
             //View에 데이터 변화
-            img.setBackgroundResource(item.image)
+//            img.setBackgroundResource(item.image)
             txt.setText(item.title)
 
             //클릭 이벤트
