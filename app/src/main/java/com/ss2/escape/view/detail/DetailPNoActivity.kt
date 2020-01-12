@@ -1,5 +1,6 @@
 package com.ss2.escape.view.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +31,17 @@ class DetailPNoActivity : AppCompatActivity() {
             tv_DetailPno_Title.text = data!!.p_No
             tv_DetailPno_MainStory.text = data!!.mainStory
             tv_DetailPno_Directive.text = data!!.directive
-            SLog.d(data!!.directive.indexOf('P').toString())
+            if(data!!.directive.indexOf('P') != -1){
+                var nextPno = data!!.directive.substring(data!!.directive.indexOf('P'),data!!.directive.indexOf('P')+4)
+                tv_DetailPno_Next.text =  nextPno + " GO";
+                tv_DetailPno_Next.setOnClickListener {
+                    var nextIntent = Intent(this, DetailPNoActivity::class.java);
+                    SLog.d("Next : " + nextPno.substring(1,nextPno.length));
+                    nextIntent.putExtra("DetailPno", nextPno.substring(1,nextPno.length).toInt() - 1)
+                    startActivity(nextIntent)
+                }
+            }
+
         }
     }
 }
