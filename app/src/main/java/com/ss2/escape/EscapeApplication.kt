@@ -1,20 +1,14 @@
 package com.ss2.escape
 
 import android.app.Application
-import android.os.Bundle
-import android.os.Debug
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ss2.escape.model.StoryData
 import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
 import io.realm.Realm
 import io.realm.kotlin.where
-import java.io.File
-import android.R
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.nio.charset.Charset
 
 
 class EscapeApplication : Application() {
@@ -64,9 +58,11 @@ class EscapeApplication : Application() {
     }
 
     fun loadData() {
-
-        var data: String? = null
-        val inputStream = resources.openRawResource(R.raw.textfile)
+        val assetManager = resources.assets
+        val inputStream = assetManager.open("textfile.txt")
+        val txtString = inputStream.bufferedReader().use { it.readText() }
+        SLog.d(txtString);
+        /*var data: String? = null
         val byteArrayOutputStream = ByteArrayOutputStream()
 
         var i: Int
@@ -77,11 +73,11 @@ class EscapeApplication : Application() {
                 i = inputStream.read()
             }
 
-            data = String(byteArrayOutputStream.toByteArray(), "MS949")
+            data = String(byteArrayOutputStream.toByteArray(), Charset.defaultCharset())
             inputStream.close()
         } catch (e: IOException) {
             e.printStackTrace()
-        }
+        }*/
 
     }
 
