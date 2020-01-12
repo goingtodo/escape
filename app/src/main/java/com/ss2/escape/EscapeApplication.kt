@@ -6,9 +6,6 @@ import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
 import io.realm.Realm
 import io.realm.kotlin.where
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.nio.charset.Charset
 
 
 class EscapeApplication : Application() {
@@ -19,8 +16,6 @@ class EscapeApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         DBInit()
-        initData()
-        readData()
         SLog.d("Start")
     }
 
@@ -31,13 +26,19 @@ class EscapeApplication : Application() {
     //RealmDB
     fun DBInit(){
         Realm.init(this)
+
+        initData()
+
         RealmDB.dataInit()
     }
 
+    fun deleteData(){
+        val defaultRealm = Realm.getDefaultInstance()
+        defaultRealm.executeTransaction {realmTransaction -> realmTransaction.deleteAll()}
+    }
     //데이터 추가
     fun insertData(item: StoryData) {
         val defaultRealm = Realm.getDefaultInstance()
-        defaultRealm.executeTransaction {realmTransaction -> realmTransaction.deleteAll()}
         defaultRealm.executeTransaction {realmTransaction ->
             realmTransaction.createObject(StoryData::class.java, item.p_No).apply {
                 mainStory = item.mainStory
@@ -53,7 +54,7 @@ class EscapeApplication : Application() {
 
         for (i in 0.. realmResult.size-1) {
             data = realmResult[i];
-            SLog.d("pno :" + data.p_No);
+            SLog.d("pno :" + data.p_No + ", " +data.mainStory);
         }
     }
 
@@ -67,6 +68,7 @@ class EscapeApplication : Application() {
         var story: List<String>
         var storys = read.split("\n") as ArrayList<String>
 
+        deleteData()
         for(i in 0..storys.size-1 ){
             story = storys[i].split("|")
 

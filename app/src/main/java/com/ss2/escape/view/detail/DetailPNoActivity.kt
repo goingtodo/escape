@@ -25,6 +25,7 @@ class DetailPNoActivity : AppCompatActivity() {
         }
 
         data = RealmDB.readStoryData(pNo_position);
+
         if(data != null){
             tv_DetailPno_Title.text = data!!.p_No
             tv_DetailPno_MainStory.text = data!!.mainStory
