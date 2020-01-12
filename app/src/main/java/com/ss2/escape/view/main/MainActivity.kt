@@ -20,7 +20,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var bottomNavigation:BottomNavigationView = findViewById(R.id.navigationView);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
-
+        supportFragmentManager.replaceFragment(
+                R.id.frameLayout,
+                PnoFragment()
+        )
     }
 
     /*private fun setViewPager() {

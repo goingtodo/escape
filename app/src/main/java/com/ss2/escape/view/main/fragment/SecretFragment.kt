@@ -1,5 +1,6 @@
 package com.ss2.escape.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,20 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ss2.escape.R
-import com.ss2.escape.adapter.ItemAdapter
+import com.ss2.escape.adapter.MainItemAdapter
 import com.ss2.escape.model.RecyclerItem
+import com.ss2.escape.util.SLog
 import kotlinx.android.synthetic.main.fragment_secret.*
 //Secret View
 //수수께기에서 표현해야하는 것들은 여기서 표현해야함
-class SecretFragment : Fragment() {
+class SecretFragment: MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
     private lateinit var recyclerItemList: MutableList<RecyclerItem>
     private val gridLayoutManager by lazy { GridLayoutManager(context,3) }
-    private lateinit var adapter: ItemAdapter
-    companion object{
-        fun newInstacne(): SecretFragment{
-            return SecretFragment()
-        }
-    }
+    private lateinit var adapterMain: MainItemAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_secret, container, false)
 
@@ -36,7 +34,11 @@ class SecretFragment : Fragment() {
             recyclerItemList.add(recyclerItem1)
         }
 
-        adapter = ItemAdapter(recyclerItemList as ArrayList<RecyclerItem>, context)
-        recycle_Secret.adapter = adapter
+        adapterMain = MainItemAdapter(recyclerItemList as ArrayList<RecyclerItem>, context, this)
+        recycle_Secret.adapter = adapterMain
+    }
+
+    override fun itemClick(position: Int) {
+
     }
 }

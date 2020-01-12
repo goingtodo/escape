@@ -15,7 +15,10 @@ import com.ss2.escape.model.RecyclerItem
 /* RecyclerView에 Item 추가 Adapter
    Item.xml을 추가하면서 어떤 오브젝트를 변경하고 설정할 것인지 Control
 * */
-class ItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?): RecyclerView.Adapter<ItemAdapter.ViewHolder>(){
+class MainItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?, var itemClick: setOnRecyclerItemClickListener): RecyclerView.Adapter<MainItemAdapter.ViewHolder>(){
+    interface setOnRecyclerItemClickListener{
+        fun itemClick(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val rootView = LayoutInflater.from(parent.context).inflate(R.layout.item_rec, parent, false)
@@ -23,7 +26,7 @@ class ItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?): Recy
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+         holder.bind(list[position], itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -39,14 +42,14 @@ class ItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?): Recy
             Log.d("RecyclerView", adapterPosition.toString())
         }
 
-        fun bind(item:RecyclerItem){
+        fun bind(item:RecyclerItem, itemClick:setOnRecyclerItemClickListener){
             //View에 데이터 변화
             img.setBackgroundResource(item.image)
             txt.setText(item.title)
 
             //클릭 이벤트
             layout.setOnClickListener {
-                Log.d("RecyclerView", "Click!! : " + adapterPosition)
+                itemClick.itemClick(adapterPosition)
             }
         }
     }
