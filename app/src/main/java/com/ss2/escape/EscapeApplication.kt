@@ -9,6 +9,13 @@ import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
 import io.realm.Realm
 import io.realm.kotlin.where
+import java.io.File
+import android.R
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+
 
 class EscapeApplication : Application() {
     init {
@@ -19,6 +26,7 @@ class EscapeApplication : Application() {
         super.onCreate()
         DBInit()
        // initData()
+        loadData()
         readData()
         SLog.d("Start")
     }
@@ -55,6 +63,27 @@ class EscapeApplication : Application() {
         }
     }
 
+    fun loadData() {
+
+        var data: String? = null
+        val inputStream = resources.openRawResource(R.raw.textfile)
+        val byteArrayOutputStream = ByteArrayOutputStream()
+
+        var i: Int
+        try {
+            i = inputStream.read()
+            while (i != -1) {
+                byteArrayOutputStream.write(i)
+                i = inputStream.read()
+            }
+
+            data = String(byteArrayOutputStream.toByteArray(), "MS949")
+            inputStream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+    }
 
     fun initData() {
         var story: List<String>
