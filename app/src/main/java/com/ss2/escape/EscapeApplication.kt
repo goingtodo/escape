@@ -1,6 +1,7 @@
 package com.ss2.escape
 
 import android.app.Application
+import com.ss2.escape.model.SecretData
 import com.ss2.escape.model.StoryData
 import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
@@ -38,12 +39,22 @@ class EscapeApplication : Application() {
     }
 
     //데이터 추가
-    fun insertData(item: StoryData) {
+    fun insertData(items: List<StoryData>, secrets: List<SecretData>) {
         val defaultRealm = Realm.getDefaultInstance()
         defaultRealm.executeTransaction {realmTransaction ->
-            realmTransaction.createObject(StoryData::class.java, item.p_No).apply {
-                mainStory = item.mainStory
-                directive = item.directive
+            for(item in items) {
+                realmTransaction.createObject(StoryData::class.java, item.p_No).apply {
+                    mainStory = item.mainStory
+                    directive = item.directive
+                }
+            }
+            for(secret in secrets) {
+                realmTransaction.createObject(SecretData::class.java, secret.s_no).apply {
+                    s_no = secret.s_no
+                    s_answer = secret.s_answer
+                    s_need_card_cnt = secret.s_need_card_cnt
+                    s_hints = secret.s_hints
+                }
             }
         }
     }
@@ -57,6 +68,13 @@ class EscapeApplication : Application() {
             data = realmResult[i];
             SLog.d("pno :" + data.p_No + ", " +data.mainStory);
         }
+
+        val realmResult2 = defaultRealm.where<SecretData>().sort("s_no").findAllAsync().toMutableList()
+        var data2: SecretData?
+
+        for(r in realmResult2) {
+            SLog.d("s_no: " + r.s_no + " s_hint" + r.s_hints);
+        }
     }
 
     fun initData() {
@@ -68,15 +86,30 @@ class EscapeApplication : Application() {
         var story: List<String>
         var storys = read.split("\n") as ArrayList<String>
 
-        deleteData()
+        var storyList : MutableList<StoryData> = arrayListOf()
         for(i in 0..storys.size-1 ){
             story = storys[i].split("|")
 
             val storyData = StoryData(story[0], story[1], story[2])
 
-            insertData(storyData)
+            storyList.add(storyData)
         }
 
+        var input = assetManager.open("secrete.txt");
+        val read2 = input.bufferedReader().use { it.readText()}
+        var lines = read2.split("\n") as ArrayList<String>
+        deleteData()
+
+        var secretList: MutableList<SecretData> = arrayListOf()
+        for(line in lines) {
+            val list = line.split("|") as ArrayList<String>
+            val hints = list.subList(2,-1)
+            val data = SecretData(list.get(0), list.get(1), list.get(2), hints)
+            secretList.add(data)
+        }
+
+        deleteData()
+        insertData(storyList, secretList)
         readData()
     }
 }

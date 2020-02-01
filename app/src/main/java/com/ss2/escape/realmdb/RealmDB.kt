@@ -15,7 +15,7 @@ class RealmDB{
         //앱 시작시 데이터 불러오기
         fun dataInit(){
             storyDataResult = realmDB.where<StoryData>().sort("p_No").findAllAsync().toMutableList()
-            //secretDataResult = realmDB.where<StoryData>().sort("p_No").findAllAsync().toMutableList()
+            secretDataResult = realmDB.where<StoryData>().sort("s_no").findAllAsync().toMutableList()
         }
 
         //Position에 해당하는 Data Read

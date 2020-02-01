@@ -8,29 +8,26 @@ import com.ss2.escape.R
 import com.ss2.escape.model.StoryData
 import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
-import io.realm.Realm
-import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.activity_detail_s.*
 import kotlinx.android.synthetic.main.activity_detailpno.*
-import kotlinx.android.synthetic.main.activity_detailpno.tv_DetailPno_Directive
-import kotlinx.android.synthetic.main.activity_detailpno.tv_DetailPno_Next
 
-class DetailPNoActivity : AppCompatActivity() {
-    private var pNo_position: Int = 0
+class DetailSecretActivity : AppCompatActivity() {
+
+    private var s_position: Int = 0
     private var data: StoryData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detailpno)
+        setContentView(R.layout.activity_detail_s)
         if(intent.hasExtra("DetailPno")){
-            pNo_position = intent.getIntExtra("DetailPno", 0)
+            s_position = intent.getIntExtra("DetailPno", 0)
         }else{
             Toast.makeText(this, "전달된 포지션이 없음", Toast.LENGTH_SHORT).show();
         }
 
-        data = RealmDB.readStoryData(pNo_position);
+        data = RealmDB.readStoryData(s_position);
 
         if(data != null){
+            tv_DetailPno_Title.text = data!!.p_No
             tv_DetailPno_MainStory.text = data!!.mainStory
             tv_DetailPno_Directive.text = data!!.directive
             if(data!!.directive.indexOf('P') != -1){
@@ -46,5 +43,5 @@ class DetailPNoActivity : AppCompatActivity() {
 
         }
     }
-}
 
+}
