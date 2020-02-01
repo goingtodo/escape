@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ss2.escape.R
 import com.ss2.escape.adapter.MainItemAdapter
 import com.ss2.escape.model.RecyclerItem
@@ -29,7 +30,7 @@ class PnoFragment : MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        recycle_Pno.layoutManager = gridLayoutManager
+        recycle_Pno.layoutManager = gridLayoutManager as RecyclerView.LayoutManager?
 
         recyclerItemList = ArrayList()
         var s: String

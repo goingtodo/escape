@@ -36,6 +36,7 @@ class EscapeApplication : Application() {
         val defaultRealm = Realm.getDefaultInstance()
         defaultRealm.executeTransaction {realmTransaction -> realmTransaction.deleteAll()}
     }
+
     //데이터 추가
     fun insertData(item: StoryData) {
         val defaultRealm = Realm.getDefaultInstance()
@@ -59,7 +60,6 @@ class EscapeApplication : Application() {
     }
 
     fun initData() {
-
         // 스토리 파일 읽기
         val assetManager = resources.assets
         val inputStream = assetManager.open("story.txt")
@@ -73,6 +73,7 @@ class EscapeApplication : Application() {
             story = storys[i].split("|")
 
             val storyData = StoryData(story[0], story[1], story[2])
+
             insertData(storyData)
         }
 

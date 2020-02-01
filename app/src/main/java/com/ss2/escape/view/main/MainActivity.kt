@@ -14,15 +14,23 @@ import com.ss2.escape.view.fragment.SecretFragment
 //Main View
 //Bottom Tap과 Fragment를 보여주는 Activity
 class MainActivity : AppCompatActivity() {
-
+    var level : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if(intent.hasExtra("Level")){
+            level = intent.getIntExtra("Level", 0)
+        }
+
+        bottomNavigationInit()
+    }
+
+    fun bottomNavigationInit(){
         var bottomNavigation:BottomNavigationView = findViewById(R.id.navigationView);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
         supportFragmentManager.replaceFragment(
-                R.id.frameLayout,
-                PnoFragment()
+            R.id.frameLayout,
+            PnoFragment()
         )
     }
 
