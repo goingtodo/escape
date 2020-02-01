@@ -1,5 +1,6 @@
 package com.ss2.escape.realmdb
 
+import com.ss2.escape.model.SecretData
 import com.ss2.escape.model.StoryData
 import com.ss2.escape.util.SLog
 import io.realm.Realm
@@ -10,12 +11,12 @@ class RealmDB{
     companion object {
         private val realmDB = Realm.getDefaultInstance()
         private var storyDataResult: MutableList<StoryData>? = null
-        private var secretDataResult: MutableList<StoryData>? = null
+        private var secretDataResult: MutableList<SecretData>? = null
 
         //앱 시작시 데이터 불러오기
         fun dataInit(){
             storyDataResult = realmDB.where<StoryData>().sort("p_No").findAllAsync().toMutableList()
-            secretDataResult = realmDB.where<StoryData>().sort("s_no").findAllAsync().toMutableList()
+            secretDataResult = realmDB.where<SecretData>().sort("s_no").findAllAsync().toMutableList()
         }
 
         //Position에 해당하는 Data Read

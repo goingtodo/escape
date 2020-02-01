@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun bottomNavigationInit(){
-        var bottomNavigation:BottomNavigationView = findViewById(R.id.navigationView);
+        var bottomNavigation:BottomNavigationView = findViewById(R.id.navigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
         supportFragmentManager.replaceFragment(
             R.id.frameLayout,
@@ -49,11 +49,16 @@ class MainActivity : AppCompatActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 var fm = supportFragmentManager
 
-                when (item.getItemId()) {
+                when (item.itemId) {
                     R.id.pnoItem -> {
+                        var bundle = Bundle()
+                        bundle.putInt("Level",level)
+                        var fragment = PnoFragment()
+                        fragment.arguments = bundle
+
                         fm.replaceFragment(
                             R.id.frameLayout,
-                            PnoFragment()
+                            fragment
                         )
                         return true
                     }

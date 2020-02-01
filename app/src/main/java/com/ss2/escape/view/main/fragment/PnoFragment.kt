@@ -1,5 +1,6 @@
 package com.ss2.escape.view.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,19 +24,18 @@ class PnoFragment : MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
     private lateinit var recyclerItemList: MutableList<RecyclerItem>
     private val gridLayoutManager by lazy { GridLayoutManager(context,5)}
     private lateinit var adapterMain: MainItemAdapter
-
+    private var level = 0
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_pno, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         recycle_Pno.layoutManager = gridLayoutManager as RecyclerView.LayoutManager?
 
         recyclerItemList = ArrayList()
         var s: String
         SLog.d(RealmDB.readStoryCount().toString());
-        //Test Data
+
         for (i in 1 until RealmDB.readStoryCount() +1) {
             s = String.format("%03d", i);
             val recyclerItem1 = RecyclerItem("P-"+s, R.drawable.ic_launcher_foreground)
@@ -43,6 +43,12 @@ class PnoFragment : MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
         }
         adapterMain = MainItemAdapter(recyclerItemList as ArrayList<RecyclerItem>, context, this)
         recycle_Pno.adapter = adapterMain
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        level = arguments?.getInt("Level", 0)!!
+        SLog.d("Level : " + level)
     }
 
     override fun itemClick(position: Int) {

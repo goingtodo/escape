@@ -6,6 +6,8 @@ import com.ss2.escape.model.StoryData
 import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
 import io.realm.Realm
+import io.realm.RealmConfiguration
+import io.realm.RealmList
 import io.realm.kotlin.where
 
 
@@ -27,7 +29,9 @@ class EscapeApplication : Application() {
     //RealmDB
     fun DBInit(){
         Realm.init(this)
-
+        val config = RealmConfiguration.Builder()
+            .deleteRealmIfMigrationNeeded()
+            .build()
         initData()
 
         RealmDB.dataInit()
@@ -50,7 +54,6 @@ class EscapeApplication : Application() {
             }
             for(secret in secrets) {
                 realmTransaction.createObject(SecretData::class.java, secret.s_no).apply {
-                    s_no = secret.s_no
                     s_answer = secret.s_answer
                     s_need_card_cnt = secret.s_need_card_cnt
                     s_hints = secret.s_hints
@@ -95,15 +98,16 @@ class EscapeApplication : Application() {
             storyList.add(storyData)
         }
 
-        var input = assetManager.open("secrete.txt");
+        var input = assetManager.open("secret.txt");
         val read2 = input.bufferedReader().use { it.readText()}
-        var lines = read2.split("\n") as ArrayList<String>
-        deleteData()
+        var lines = read2.split("\n")
 
         var secretList: MutableList<SecretData> = arrayListOf()
         for(line in lines) {
             val list = line.split("|") as ArrayList<String>
-            val hints = list.subList(2,-1)
+            val array = list.subList(2, list.size -1).toList() as ArrayList<String>
+            val hints = RealmList<String>()
+            hints.addAll(array.toArray(arrayOfNulls<String>(array.size)))
             val data = SecretData(list.get(0), list.get(1), list.get(2), hints)
             secretList.add(data)
         }
