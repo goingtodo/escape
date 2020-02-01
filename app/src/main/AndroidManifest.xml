@@ -10,15 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.ss2.escape.view.MainActivity">
+        <activity android:name=".view.select.SelectActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                    <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name="com.ss2.escape.view.detail.DetailPNoActivity"/>
+        <activity android:name=".view.detail.DetailPNoActivity"/>
+        <activity android:name=".view.main.MainActivity"/>
     </application>
 
 </manifest>

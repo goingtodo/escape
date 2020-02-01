@@ -1,4 +1,4 @@
-package com.ss2.escape.view
+package com.ss2.escape.view.main
 
 import android.os.Bundle
 import android.view.MenuItem

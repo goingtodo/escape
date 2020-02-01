@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C498A7"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_Selete_Tutorial"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30sp"
+        android:background="@color/design_default_color_secondary"
+        android:gravity="center"
+        android:text="튜토리얼"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_Selete_File1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30sp"
+        android:background="@color/design_default_color_secondary"
+        android:gravity="center"
+        android:text="파일 #1"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_Selete_File2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30sp"
+        android:background="@color/design_default_color_secondary"
+        android:gravity="center"
+        android:text="파일 #2"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_Selete_File3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30sp"
+        android:background="@color/design_default_color_secondary"
+        android:gravity="center"
+        android:text="파일 #3"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:layout_weight="1"/>
+
+</LinearLayout>
