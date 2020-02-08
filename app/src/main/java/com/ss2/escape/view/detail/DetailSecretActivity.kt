@@ -24,7 +24,7 @@ class DetailSecretActivity : AppCompatActivity() {
             Toast.makeText(this, "전달된 포지션이 없음", Toast.LENGTH_SHORT).show();
         }
 
-        data = RealmDB.readStoryData(s_position);
+        data = RealmDB.readStoryData("S");
 
         if(data != null){
             tv_DetailPno_Title.text = data!!.p_No

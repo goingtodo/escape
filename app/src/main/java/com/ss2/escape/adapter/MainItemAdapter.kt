@@ -17,7 +17,7 @@ import com.ss2.escape.model.RecyclerItem
 * */
 class MainItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?, var itemClick: setOnRecyclerItemClickListener): RecyclerView.Adapter<MainItemAdapter.ViewHolder>(){
     interface setOnRecyclerItemClickListener{
-        fun itemClick(position: Int)
+        fun itemClick(arg: String)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -49,7 +49,7 @@ class MainItemAdapter(val list:ArrayList<RecyclerItem>, val context: Context?, v
 
             //클릭 이벤트
             layout.setOnClickListener {
-                itemClick.itemClick(adapterPosition)
+                itemClick.itemClick(item.title)
             }
         }
     }

@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        //super.onBackPressed()
-        SLog.d("BACK")
+        super.onBackPressed()
+        super.onBackPressed()
     }
 
     /*private fun setViewPager() {

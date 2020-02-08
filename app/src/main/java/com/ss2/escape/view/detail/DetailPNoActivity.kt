@@ -16,14 +16,14 @@ import kotlinx.android.synthetic.main.activity_detailpno.tv_DetailPno_Directive
 import kotlinx.android.synthetic.main.activity_detailpno.tv_DetailPno_Next
 
 class DetailPNoActivity : AppCompatActivity() {
-    private var pNo_position: Int = 0
+    private lateinit var pNo_position: String
     private var data: StoryData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailpno)
         if(intent.hasExtra("DetailPno")){
-            pNo_position = intent.getIntExtra("DetailPno", 0)
+            pNo_position = intent.getStringExtra("DetailPno")
         }else{
             Toast.makeText(this, "전달된 포지션이 없음", Toast.LENGTH_SHORT).show();
         }
@@ -31,6 +31,7 @@ class DetailPNoActivity : AppCompatActivity() {
         data = RealmDB.readStoryData(pNo_position);
 
         if(data != null){
+            tv_DetailPno_Title.text = pNo_position
             tv_DetailPno_MainStory.text = data!!.mainStory
             tv_DetailPno_Directive.text = data!!.directive
             if(data!!.directive.indexOf('P') != -1){
