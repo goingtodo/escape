@@ -45,7 +45,6 @@ class SecretFragment: MainItemAdapter.setOnRecyclerItemClickListener, Fragment()
     }
 
     override fun itemClick(arg: String) {
-
     }
 
     override fun itemClick(position: Int) {

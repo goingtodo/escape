@@ -27,6 +27,7 @@ class DetailSecretActivity : AppCompatActivity() {
 
         data = RealmDB.readSecretData(s_position);
 
+
         if(data != null){
             tv_Detail_s.text = data!!.s_no
 
