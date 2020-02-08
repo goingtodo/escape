@@ -30,32 +30,38 @@ class PnoFragment : MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        recycle_Pno.layoutManager = gridLayoutManager as RecyclerView.LayoutManager?
+        if(arguments != null) {
+            level = this.arguments!!.getInt("Level", 0)
+        }
+        SLog.d("Level : " + level)
 
+        recycle_Pno.layoutManager = gridLayoutManager as RecyclerView.LayoutManager?
+        var dataList = RealmDB.readLevelStroyData(level)
         recyclerItemList = ArrayList()
         var s: String
-        SLog.d(RealmDB.readStoryCount().toString());
-
-        for (i in 1 until RealmDB.readStoryCount() +1) {
-            s = String.format("%03d", i);
-            val recyclerItem1 = RecyclerItem("P-"+s, R.drawable.ic_launcher_foreground)
+        for (i in dataList!!) {
+            val recyclerItem1 = RecyclerItem(i.p_No!!, R.drawable.ic_launcher_foreground)
             recyclerItemList.add(recyclerItem1)
         }
         adapterMain = MainItemAdapter(recyclerItemList as ArrayList<RecyclerItem>, context, this)
         recycle_Pno.adapter = adapterMain
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        level = arguments?.getInt("Level", 0)!!
-        SLog.d("Level : " + level)
-    }
 
     override fun itemClick(position: Int) {
-        SLog.d("ViewPosition = " + position)
         val nextIntent = Intent(context, DetailPNoActivity::class.java)
         nextIntent.putExtra("DetailPno", position)
         startActivity(nextIntent)
+    }
+
+    companion object{
+        fun newInstacne(level:Int): PnoFragment {
+            val fragment = PnoFragment()
+            val args = Bundle()
+            args.putInt("Level", level)
+            fragment.arguments = args
+            return fragment
+        }
     }
 
 }
