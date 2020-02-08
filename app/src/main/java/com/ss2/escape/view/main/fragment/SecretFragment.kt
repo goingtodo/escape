@@ -11,7 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ss2.escape.R
 import com.ss2.escape.adapter.MainItemAdapter
 import com.ss2.escape.model.RecyclerItem
+import com.ss2.escape.model.SecretData
+import com.ss2.escape.model.StoryData
+import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
+import com.ss2.escape.view.detail.DetailPNoActivity
+import com.ss2.escape.view.detail.DetailSecretActivity
 import kotlinx.android.synthetic.main.fragment_secret.*
 //Secret View
 //수수께기에서 표현해야하는 것들은 여기서 표현해야함
@@ -29,9 +34,9 @@ class SecretFragment: MainItemAdapter.setOnRecyclerItemClickListener, Fragment()
 
         recyclerItemList = ArrayList()
 
-        //Test Data
-        for (i in 0 until 20) {
-            val recyclerItem1 = RecyclerItem("RecyclerFragment2 Test_$i", R.drawable.ic_launcher_background)
+        for (i in 0 until RealmDB.readSecretCount()) {
+            val data: SecretData? = RealmDB.readSecretData(i)
+            val recyclerItem1 = RecyclerItem(data!!.s_no+"", R.drawable.ic_launcher_foreground)
             recyclerItemList.add(recyclerItem1)
         }
 
@@ -39,8 +44,14 @@ class SecretFragment: MainItemAdapter.setOnRecyclerItemClickListener, Fragment()
         recycle_Secret.adapter = adapterMain
     }
 
-
     override fun itemClick(arg: String) {
 
+    }
+
+    override fun itemClick(position: Int) {
+        SLog.d("ViewPosition = " + position)
+        val nextIntent = Intent(context, DetailSecretActivity::class.java)
+        nextIntent.putExtra("DetailSno", position)
+        startActivity(nextIntent)
     }
 }
