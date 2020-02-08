@@ -24,6 +24,33 @@ class RealmDB{
             var data = storyDataResult?.get(position);
             return data
         }
+        fun readLevelStroyData(level : Int) : List<StoryData>?{
+            var dataList : List<StoryData>
+            /*when(level){
+                0 -> {
+                    //튜토리얼 DataList
+                    dataList = storyDataResult!!.filter { it.p_No!!.startsWith("P-"+level) }
+                    SLog.d(dataList.size.toString())
+                }
+                1 -> {
+                    //파일1 DataList
+                    dataList = storyDataResult!!.drop(24)
+                    dataList = dataList!!.dropLast(62)
+                    SLog.d(dataList.size.toString())
+                }
+                2 -> {
+                    //파일2 DataList
+                    dataList = storyDataResult!!.drop(96)
+                }
+                3 -> {
+                    //파일3 DataList
+                    dataList = storyDataResult!!.drop(159)
+                }
+            }*/
+            dataList = storyDataResult!!.filter { it.p_No!!.startsWith("P-"+level) }
+            SLog.d("DataListSize : " + dataList.size.toString())
+            return dataList
+        }
 
         fun readStoryCount(): Int {
             return storyDataResult!!.size

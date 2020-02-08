@@ -16,11 +16,15 @@ class SelectActivity : AppCompatActivity(){
         setContentView(R.layout.activity_selete)
 
         tv_Selete_Tutorial.setOnClickListener(levelClickListener)
+        tv_Selete_File1.setOnClickListener(levelClickListener)
+        tv_Selete_File2.setOnClickListener(levelClickListener)
+        tv_Selete_File3.setOnClickListener(levelClickListener)
     }
 
     val levelClickListener = object : View.OnClickListener{
         override fun onClick(v: View?) {
             var intent = Intent(applicationContext, MainActivity::class.java)
+
             when (v!!.id) {
                 R.id.tv_Selete_Tutorial -> intent.putExtra("Level", 0)
                 R.id.tv_Selete_File1 -> intent.putExtra("Level", 1)
@@ -28,6 +32,7 @@ class SelectActivity : AppCompatActivity(){
                 R.id.tv_Selete_File3 -> intent.putExtra("Level", 3)
                 else -> null
             }
+
             startActivity(intent)
         }
 

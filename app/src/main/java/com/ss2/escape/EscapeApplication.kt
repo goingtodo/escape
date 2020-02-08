@@ -12,19 +12,22 @@ import io.realm.kotlin.where
 
 
 class EscapeApplication : Application() {
+
     init {
         INSTANCE = this
     }
 
+    companion object {
+        lateinit var INSTANCE: EscapeApplication
+
+    }
     override fun onCreate() {
         super.onCreate()
         DBInit()
         SLog.d("Start")
     }
 
-    companion object {
-        lateinit var INSTANCE: EscapeApplication
-    }
+
 
     //RealmDB
     fun DBInit(){
