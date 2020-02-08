@@ -47,8 +47,8 @@ class PnoFragment : MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        level = arguments?.getInt("Level", 0)!!
-        SLog.d("Level : " + level)
+//        level = arguments?.getInt("Level", 0)!!
+//        SLog.d("Level : " + level)
     }
 
     override fun itemClick(position: Int) {

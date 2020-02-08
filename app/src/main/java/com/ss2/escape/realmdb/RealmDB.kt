@@ -28,5 +28,14 @@ class RealmDB{
         fun readStoryCount(): Int {
             return storyDataResult!!.size
         }
+
+        fun readSecretData(position: Int): SecretData? {
+            var data = secretDataResult?.get(position)
+            return data
+        }
+
+        fun readSecretCount(): Int {
+            return secretDataResult!!.size
+        }
     }
 }

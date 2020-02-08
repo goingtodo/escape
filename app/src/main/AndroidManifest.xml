@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.detail.DetailPNoActivity"/>
+        <activity android:name=".view.detail.DetailSecretActivity"/>
         <activity android:name=".view.main.MainActivity"/>
     </application>
 
