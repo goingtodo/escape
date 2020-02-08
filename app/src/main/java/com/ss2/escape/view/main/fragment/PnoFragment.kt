@@ -47,11 +47,15 @@ class PnoFragment : MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
         recycle_Pno.adapter = adapterMain
     }
 
-
-    override fun itemClick(arg: String) {
+    override fun itemClick(str: String) {
         val nextIntent = Intent(context, DetailPNoActivity::class.java)
-        nextIntent.putExtra("DetailPno", arg)
+        SLog.d("PnoF : " + str)
+        nextIntent.putExtra("DetailPno", str)
         startActivity(nextIntent)
+    }
+
+    override fun itemClick(postion: Int) {
+
     }
 
     companion object{
