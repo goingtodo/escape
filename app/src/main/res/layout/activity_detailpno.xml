@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:layout_weight="1.5"
+        android:layout_weight="5"
         android:background="@drawable/ic_launcher_background"
         android:gravity="center"
         android:text="Title"
@@ -20,6 +20,7 @@
         android:textSize="40sp" />
 
     <ScrollView
+        android:id="@+id/sv_DetailPno"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
@@ -33,54 +34,50 @@
             <TextView
                 android:id="@+id/tv_DetailPno_MainStory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="MainStory"
                 android:textColor="#000000"
                 android:textSize="25sp" />
-        </LinearLayout>
-    </ScrollView>
 
-    <ImageView
-        android:id="@+id/stroke"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_margin="10dp"
-        app:srcCompat="@drawable/stroke" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/stroke"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/stroke" />
 
             <TextView
                 android:id="@+id/tv_DetailPno_Directive"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
                 android:gravity="center"
                 android:text="Directive"
                 android:textColor="#424242"
                 android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tv_DetailPno_Next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1.5"
+                android:background="@color/design_default_color_secondary"
+                android:gravity="center"
+                android:text="Next"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/stroke2"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/stroke" />
+
         </LinearLayout>
     </ScrollView>
-
-    <TextView
-        android:id="@+id/tv_DetailPno_Next"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:background="@color/design_default_color_secondary"
-        android:gravity="center"
-        android:text="Next"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:layout_weight="1.5"/>
 
 </LinearLayout>

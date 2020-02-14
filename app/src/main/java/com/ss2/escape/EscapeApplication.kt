@@ -33,17 +33,17 @@ class EscapeApplication : Application() {
     fun DBInit(){
         Realm.init(this)
         val config = RealmConfiguration.Builder()
+                //.schemaVersion(1)
             .deleteRealmIfMigrationNeeded()
             .build()
-        initData()
+        Realm.setDefaultConfiguration(config);
+        Realm.deleteRealm(config)
 
+
+        initData()
         RealmDB.dataInit()
     }
 
-    fun deleteData(){
-        val defaultRealm = Realm.getDefaultInstance()
-        defaultRealm.executeTransaction {realmTransaction -> realmTransaction.deleteAll()}
-    }
 
     //데이터 추가
     fun insertData(items: List<StoryData>, secrets: List<SecretData>) {
@@ -76,7 +76,6 @@ class EscapeApplication : Application() {
         }
 
         val realmResult2 = defaultRealm.where<SecretData>().sort("s_no").findAllAsync().toMutableList()
-        var data2: SecretData?
 
         for(r in realmResult2) {
             SLog.d("s_no: " + r.s_no + " s_hint" + r.s_hints);
@@ -115,7 +114,7 @@ class EscapeApplication : Application() {
             secretList.add(data)
         }
 
-        deleteData()
+      //  deleteData()
         insertData(storyList, secretList)
         readData()
     }

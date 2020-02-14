@@ -54,10 +54,6 @@ class PnoFragment : MainItemAdapter.setOnRecyclerItemClickListener, Fragment() {
         startActivity(nextIntent)
     }
 
-    override fun itemClick(postion: Int) {
-
-    }
-
     companion object{
         fun newInstacne(level:Int): PnoFragment {
             val fragment = PnoFragment()

@@ -48,11 +48,4 @@ class SecretFragment: MainItemAdapter.setOnRecyclerItemClickListener, Fragment()
         nextIntent.putExtra("DetailSno", arg)
         startActivity(nextIntent)
     }
-
-    override fun itemClick(position: Int) {
-        SLog.d("ViewPosition = " + position)
-        val nextIntent = Intent(context, DetailSecretActivity::class.java)
-        nextIntent.putExtra("DetailSno", position)
-        startActivity(nextIntent)
-    }
 }
