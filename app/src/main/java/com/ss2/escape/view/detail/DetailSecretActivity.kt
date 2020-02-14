@@ -1,15 +1,12 @@
 package com.ss2.escape.view.detail
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ss2.escape.R
 import com.ss2.escape.model.SecretData
 import com.ss2.escape.realmdb.RealmDB
-import com.ss2.escape.util.SLog
 import kotlinx.android.synthetic.main.activity_detail_s.*
-import kotlinx.android.synthetic.main.activity_detailpno.*
 
 class DetailSecretActivity : AppCompatActivity() {
 
@@ -29,7 +26,7 @@ class DetailSecretActivity : AppCompatActivity() {
 
 
         if(data != null){
-            tv_Detail_s.text = data!!.s_no
+            tv_detail_secret_answer.text = data!!.s_no
 
 
         }

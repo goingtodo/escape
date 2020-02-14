@@ -12,10 +12,8 @@ import com.ss2.escape.R
 import com.ss2.escape.adapter.MainItemAdapter
 import com.ss2.escape.model.RecyclerItem
 import com.ss2.escape.model.SecretData
-import com.ss2.escape.model.StoryData
 import com.ss2.escape.realmdb.RealmDB
 import com.ss2.escape.util.SLog
-import com.ss2.escape.view.detail.DetailPNoActivity
 import com.ss2.escape.view.detail.DetailSecretActivity
 import kotlinx.android.synthetic.main.fragment_secret.*
 //Secret View
@@ -45,6 +43,10 @@ class SecretFragment: MainItemAdapter.setOnRecyclerItemClickListener, Fragment()
     }
 
     override fun itemClick(arg: String) {
+        SLog.d("ViewPosition = " + arg)
+        val nextIntent = Intent(context, DetailSecretActivity::class.java)
+        nextIntent.putExtra("DetailSno", arg)
+        startActivity(nextIntent)
     }
 
     override fun itemClick(position: Int) {
