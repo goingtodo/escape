@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../escape.iml" filepath="$PROJECT_DIR$/../escape.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="escape/app" />
+      <module fileurl="file://$PROJECT_DIR$/../escape.iml" filepath="$PROJECT_DIR$/../escape.iml" group="escape" />
     </modules>
   </component>
 </project>

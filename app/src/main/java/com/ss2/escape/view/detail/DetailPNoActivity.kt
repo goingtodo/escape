@@ -42,7 +42,7 @@ class DetailPNoActivity : AppCompatActivity() {
             pNo_position = pno
             viewData()
         }
-    }
+    } 
 
     fun viewData(){
         data = RealmDB.readStoryData(pNo_position);
